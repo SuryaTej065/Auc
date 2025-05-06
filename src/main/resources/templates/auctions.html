@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BBS - Browse Auctions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .auction-card {
+          /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+        }
+        .auction-card:hover {
+          /* transform: translateY(-5px); */
+          /* box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
+        }
+        /* @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } */
+        .page-content {
+          /* animation: fadeIn 0.5s ease-out; */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+
+<!-- Navigation -->
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-purple-600 text-xl font-bold">BBS</span>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="/home" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="/auctions" class="border-purple-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Auctions</a>
+                    <a href="/mybids" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">My Bids</a>
+                    <a href="/sell" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Sell Item</a>
+                </div>
+            </div>
+            <div class="hidden sm:flex sm:items-center sm:ml-auto">
+                <a href="/myaccount" class="text-gray-500 hover:text-gray-700 text-sm font-medium">My Account</a>
+            </div>
+            <div class="flex items-center sm:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="page-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Page Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Browse Auctions</h1>
+        <p class="text-gray-600 mt-2">Find great deals from your fellow students</p>
+    </div>
+
+    <!-- Auctions Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <th:block th:if="${auctionItems != null and !auctionItems.isEmpty()}">
+            <th:block th:each="item : ${auctionItems}">
+                <a th:href="@{|/auction/${item.id}|}"
+                   class="auction-card bg-white p-6 rounded-lg shadow-md block hover:shadow-lg transition">
+
+                    <img th:if="${item.imageUrls != null and item.imageUrls.size() > 0}"
+                         th:src="${item.imageUrls[0]}"
+                         alt="Item Image"
+                         class="w-full h-48 object-cover rounded mb-4"/>
+
+                    <h2 class="text-xl font-bold mb-2" th:text="${item.itemTitle}">Item Title</h2>
+                    <p class="text-gray-600 mb-1" th:text="'Condition: ' + ${item.itemCondition}">Condition</p>
+                    <p class="text-gray-600 mb-1" th:text="'Ends: ' + ${#temporals.format(item.endTime, 'dd MMM yyyy HH:mm')}">End Time</p>
+                    <p class="text-purple-700 font-bold"
+                       th:text="${'₹' + (item.currentBid != null ? item.currentBid : item.startingPrice)}">₹0</p>
+
+                </a>
+            </th:block>
+        </th:block>
+        <p class="text-gray-500 text-center col-span-full" th:if="${auctionItems == null or auctionItems.isEmpty()}">
+            No auctions available right now. Please check back later.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

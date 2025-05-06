@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBS - Terms of Service</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f3f4f6;
+        }
+        .terms-section h3 {
+          color: #4B5563;
+          margin-top: 1.5rem;
+          margin-bottom: 0.75rem;
+        }
+        .terms-section p {
+          margin-bottom: 1rem;
+        }
+        .terms-section ul {
+          margin-bottom: 1rem;
+          list-style-type: disc;
+          padding-left: 1.5rem;
+        }
+        .terms-section ul li {
+          margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-purple-600 text-xl font-bold">BBS</span>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="home.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        Home
+                    </a>
+                    <a href="auctions.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        Auctions
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        My Bids
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        Sell Item
+                    </a>
+                    <a href="faq.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        FAQs
+                    </a>
+                </div>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                <div class="ml-3 relative">
+                    <div>
+                        <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            <img class="h-8 w-8 rounded-full" src="C:\BBS\IMAGES\png 19.jpg" alt="User profile">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="flex items-center sm:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl font-bold">Terms of Service</h1>
+        <p class="mt-2">Last updated: March 23, 2025</p>
+    </div>
+</div>
+
+<!-- Terms Content -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-8">
+            <div class="terms-section text-gray-700">
+                <p class="text-lg">Welcome to Bid Buy Save ("BBS"). </p>
+
+                <p>By accessing or using our Service, you agree to be bound by these Terms of Service. If you do not agree to these Terms of Service, please do not use our Service.</p>
+
+                <h3 class="text-xl font-bold">1. Service Description</h3>
+                <p>BBS is an online auction platform exclusively for University students that enables users to list items for sale and place bids on items listed by other users. Our Service facilitates these transactions but is not a party to any transaction between users.</p>
+
+                <p>We do not buy, sell, exchange, or take possession of any items listed on our platform. We are not responsible for the quality, safety, legality, or availability of the items listed, nor for the ability of users to complete transactions.</p>
+
+                <h3 class="text-xl font-bold">2. User Registration and Eligibility</h3>
+                <p>To use our Service, you must:</p>
+                <ul>
+                    <li>Be a currently enrolled student at University</li>
+                    <li>Register for an account with a valid university-issued email address</li>
+                    <li>Provide accurate, complete, and current information during the registration process</li>
+                </ul>
+
+                <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+
+                <h3 class="text-xl font-bold">3. User Conduct</h3>
+                <p>When using our Service, you agree to:</p>
+                <ul>
+                    <li>Comply with all applicable laws and regulations</li>
+                    <li>Respect the rights of other users</li>
+                    <li>Provide accurate information about items listed for sale</li>
+                    <li>Honor bids placed and transactions agreed upon</li>
+                    <li>Meet in safe, public locations for item exchanges</li>
+                    <li>Report any suspicious or inappropriate behavior to BBS</li>
+                </ul>
+
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Use our Service for any illegal purpose</li>
+                    <li>Post false, misleading, or deceptive content</li>
+                    <li>Impersonate any person or entity</li>
+                    <li>Interfere with the proper functioning of the Service</li>
+                    <li>Attempt to gain unauthorized access to any part of the Service</li>
+                    <li>Engage in bidding manipulation or price inflation</li>
+                    <li>Harass, threaten, or intimidate other users</li>
+                    <li>Use the Service to send spam or unsolicited messages</li>
+                </ul>
+
+                <h3 class="text-xl font-bold">4. Listings and Auctions</h3>
+                <p><strong>Listing Items:</strong></p>
+                <ul>
+                    <li>You must be the legal owner of the item or authorized to sell it</li>
+                    <li>All items must be described accurately with clear photos</li>
+                    <li>You must specify any defects, damages, or issues with the item</li>
+                    <li>You must set a reasonable starting price</li>
+                    <li>You are responsible for the content of your listings</li>
+                </ul>
+
+                <p><strong>Bidding on Items:</strong></p>
+                <ul>
+                    <li>All bids are binding commitments to purchase the item at the bid price</li>
+                    <li>You must have the intent and ability to complete the transaction if you win</li>
+                    <li>You cannot retract bids except in exceptional circumstances approved by BBS</li>
+                    <li>You are responsible for inspecting items before completing a purchase</li>
+                </ul>
+
+                <h3 class="text-xl font-bold">5. Prohibited Items</h3>
+                <p>The following items are prohibited from being listed on our Service:</p>
+                <ul>
+                    <li>Illegal items or contraband</li>
+                    <li>Counterfeit or replica items</li>
+                    <li>Adult or explicit content</li>
+                    <li>Animals or animal products</li>
+                    <li>Perishable food items</li>
+                    <li>Personal identification documents</li>
+                    <li>Items prohibited by University policy</li>
+                </ul>
+
+                <h3 class="text-xl font-bold">7. Termination of Service</h3>
+                <p>BBS reserves the right to suspend or terminate your access to our Service at any time for any reason, including but not limited to:</p>
+                <ul>
+                    <li>Violation of these Terms of Service</li>
+                    <li>Engaging in fraudulent or illegal activity</li>
+                    <li>Creating a risk or possible legal exposure for BBS</li>
+                    <li>Upon request from University administration</li>
+                    <li>Extended periods of account inactivity</li>
+                </ul>
+
+                <p>Upon termination, your right to use the Service will immediately cease, but all provisions of these Terms of Service that should survive termination shall remain in effect.</p>
+
+                <h3 class="text-xl font-bold">8. Disclaimers and Limitations of Liability</h3>
+                <p>Our Service is provided "as is" and "as available" without warranties of any kind, either express or implied. BBS disclaims all warranties, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+
+                <p>BBS is not responsible for:</p>
+                <ul>
+                    <li>The conduct of users on our platform</li>
+                    <li>The content posted by users</li>
+                    <li>The quality, safety, or legality of items listed</li>
+                    <li>Disputes between users</li>
+                    <li>Any loss or damage resulting from your use of our Service</li>
+                </ul>
+
+                <p>In no event shall BBS be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of our Service.</p>
+
+                <h3 class="text-xl font-bold">9. Changes to Terms of Service</h3>
+                <p>We reserve the right to modify these Terms of Service at any time. If we make changes, we will provide notice by posting the updated Terms of Service on this page and updating the "Last updated" date at the top.</p>
+
+                <p>Your continued use of our Service after any such changes constitutes your acceptance of the new Terms of Service.</p>
+
+                <h3 class="text-xl font-bold">10. Governing Law</h3>
+                <p>These Terms of Service shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+
+                <div class="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <h4 class="font-bold text-gray-800 mb-2">Contact Us</h4>
+                    <p>If you have any questions about these Terms of Service, please contact us at:</p>
+                    <p class="mt-2">Email: <a href="mailto:auctionmailauth@gmail.com" class="text-purple-600 hover:text-purple-800">auctionmailauth@gmail.com</a></p>
+                    <p>Address: Mahindra University, Hyderabad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

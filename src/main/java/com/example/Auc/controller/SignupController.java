@@ -1,0 +1,52 @@
+package com.example.Auc.controller;
+
+import com.example.Auc.entity.User;
+import com.example.Auc.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class SignupController {
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/signup")
+    public String showSignupPage(Model model) {
+        model.addAttribute("user", new User());
+        return "signup";
+    }
+
+    @PostMapping("/signup")
+    public String signup(@ModelAttribute User user, Model model) {
+        String message = userService.registerUser(user);
+        model.addAttribute("message", message);
+        model.addAttribute("email", user.getEmail());
+        // Redirect to login if user is already verified
+        if ("Email already exists and is verified!".equals(message)) {
+            return "redirect:/login";
+        }
+        return "otp"; // Show OTP page if not verified
+    }
+
+    @PostMapping("/verify-otp")
+    public String verifyOtp(@RequestParam String email, @RequestParam String otp, Model model) {
+        if (userService.verifyOtp(email, otp)) {
+            return "redirect:/home"; // Redirect to home page if verified
+        } else {
+            model.addAttribute("error", "Invalid or expired OTP. Please try again.");
+            model.addAttribute("email", email); // Ensure email is always set
+            return "otp"; // Return to OTP page
+        }
+    }
+
+    @PostMapping("/resend-otp")
+    public String resendOtp(@RequestParam String email, Model model) {
+        userService.resendOtp(email);
+        model.addAttribute("message", "OTP has been resent to your email.");
+        model.addAttribute("email", email); // Ensure email is always set
+        return "otp"; // Return to OTP page
+    }
+}

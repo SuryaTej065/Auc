@@ -1,0 +1,32 @@
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDateTime;
+
+@PostMapping("/signup")
+public String signUp(@RequestParam String email) {
+    generatedOTP = Otp.generateOTP();
+    otpTimestamp = LocalDateTime.now();
+
+    emailService.sendOTP(email, generatedOTP); // Send OTP to user's email
+    return "OTP sent to " + email;
+}
+
+@PostMapping("/verify-otp")
+public String verifyOTP(@RequestParam String inputOTP) {
+    if (generatedOTP == null || otpTimestamp == null) {
+        return "Please request an OTP first.";
+    }
+
+    // Check expiration (5 minutes)
+    if (LocalDateTime.now().isAfter(otpTimestamp.plusMinutes(5))) {
+        return "OTP expired. Please request a new one.";
+    }
+
+    // Validate OTP
+    if (inputOTP.equals(generatedOTP)) {
+        return "OTP verified successfully!";
+    } else {
+        return "Invalid OTP. Please try again.";
+    }
+}

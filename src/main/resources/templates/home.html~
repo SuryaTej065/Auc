@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BBS - Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .auction-card {
+        }
+        .auction-card:hover {
+          /* No hover effect */
+        }
+        .tab-button {
+        }
+        .tab-button.active {
+          background-color: #8B5CF6;
+          color: white;
+        }
+        .tab-content {
+          display: none;
+        }
+        .tab-content.active {
+          display: block;
+        }
+        .page-content {
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-purple-600 to-indigo-700 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:w-1/2">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                        Bid Buy Save
+                    </h1>
+                    <p class="mt-4 text-xl">
+                        Buy, sell, and discover unique items from your fellow students. Find treasures and new deals every day!
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row sm:space-x-4">
+                        <a href="/auctions" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-purple-700 bg-white hover:bg-gray-100 mb-3 sm:mb-0">
+                            Browse Auctions
+                        </a>
+                        <a href="/mybids" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-purple-700 bg-white hover:bg-gray-100 mb-3 sm:mb-0">
+                            My Bids
+                        </a>
+                        <a href="/sell" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-purple-700 bg-white hover:bg-gray-100">
+                            Start Selling
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 lg:w-1/2 lg:flex lg:justify-end">
+                    <!-- Optional image or graphic -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works-section py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">List or Bid</h3>
+                    <p class="text-gray-600">List items you want to sell or bid on items you're interested in purchasing.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Meet & Review</h3>
+                    <p class="text-gray-600">Meet on campus to exchange items and leave a review to help others make informed choices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.querySelector('button[type="button"]');
+      if (menuButton) {
+        menuButton.addEventListener('click', function() {
+          console.log('Mobile menu clicked');
+        });
+      }
+    });
+</script>
+</body>
+</html>
