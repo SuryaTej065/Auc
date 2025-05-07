@@ -10,16 +10,6 @@
         body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .auction-card {
-          /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
-        }
-        .auction-card:hover {
-          /* transform: translateY(-5px); */
-          /* box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
-        }
-        .tab-button {
-          /* transition: all 0.3s ease; */
-        }
         .tab-button.active {
           background-color: #8B5CF6;
           color: white;
@@ -29,17 +19,11 @@
         }
         .tab-content.active {
           display: block;
-          /* animation: fadeIn 0.5s ease-out; */
-        }
-        /* @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } */
-        .page-content {
-          /* animation: fadeIn 0.5s ease-out; */
         }
     </style>
 </head>
 <body class="bg-gray-50 p-0 overflow-x-hidden">
 
-<!-- Navigation -->
 <nav class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
@@ -54,13 +38,11 @@
                     <a href="/sell" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Sell Item</a>
                 </div>
             </div>
-            <!-- My Account button -->
             <div class="hidden sm:flex items-center">
                 <a href="/myaccount" class="text-sm font-medium text-gray-600 hover:text-purple-600 px-4 py-2 rounded-md transition duration-150 ease-in-out">
                     My Account
                 </a>
             </div>
-            <!-- Mobile menu icon -->
             <div class="flex sm:hidden">
                 <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
                     <i class="fas fa-bars"></i>
@@ -70,17 +52,13 @@
     </div>
 </nav>
 
-<!-- Page Content -->
 <div class="page-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Page Header -->
     <div class="mb-8">
         <h1 class="text-3xl font-bold text-gray-900">My Bids</h1>
         <p class="text-gray-600 mt-2">Track all your bidding activity in one place</p>
     </div>
 
-    <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <!-- Active Bids Stats -->
         <div class="bg-white rounded-lg shadow-md p-6">
             <div>
                 <p class="text-sm text-gray-600">Active Bids</p>
@@ -88,7 +66,6 @@
             </div>
         </div>
 
-        <!-- Outbid Stats -->
         <div class="bg-white rounded-lg shadow-md p-6">
             <div>
                 <p class="text-sm text-gray-600">Outbid</p>
@@ -96,7 +73,6 @@
             </div>
         </div>
 
-        <!-- Won Auctions Stats -->
         <div class="bg-white rounded-lg shadow-md p-6">
             <div>
                 <p class="text-sm text-gray-600">Won Auctions</p>
@@ -104,7 +80,6 @@
             </div>
         </div>
 
-        <!-- My Auctions Stats -->
         <div class="bg-white rounded-lg shadow-md p-6">
             <div>
                 <p class="text-sm text-gray-600">My Auctions</p>
@@ -113,7 +88,6 @@
         </div>
     </div>
 
-    <!-- Lists of Items -->
     <div>
         <h2 class="text-xl font-bold mt-8 mb-2">Active Bids</h2>
         <div th:if="${#lists.isEmpty(myActiveBids)}">

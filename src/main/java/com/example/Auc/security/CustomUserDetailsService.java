@@ -1,4 +1,3 @@
-// src/main/java/com/example/Auc/security/CustomUserDetailsService.java
 package com.example.Auc.security;
 
 import com.example.Auc.entity.User;

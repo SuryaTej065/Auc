@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+// im commenting out since its already being used in auc cntrller
 //    @GetMapping("/mybids")
 //    public String showMyBidsPage() {
-//        return "mybids"; // Looks for mybids.html in templates
+//        return "mybids";
 //    }
 
     @GetMapping("/home")
     public String showHomePage() {
-        return "home"; // Looks for home.html in templates
+        return "home";
     }
 }

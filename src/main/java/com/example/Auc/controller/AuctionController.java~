@@ -238,10 +238,8 @@ public class AuctionController {
         // My Auctions: user's own active auctions (uploaded and not ended)
         List<AuctionItem> myActiveAuctions = auctionItemRepository.findAll().stream()
                 .filter(item -> item.getSeller() != null
-                        && item.getSeller().getId().equals(user.getId())
-                        && item.getEndTime().isAfter(now))
+                        && item.getSeller().getId().equals(user.getId()))
                 .collect(Collectors.toList());
-
         model.addAttribute("activeBids", activeBids);
         model.addAttribute("outbid", outbid);
         model.addAttribute("wonAuctions", wonAuctions);

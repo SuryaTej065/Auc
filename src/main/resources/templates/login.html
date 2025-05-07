@@ -10,15 +10,10 @@
       background-color: #f3f4f6;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .login-container {
-      /* animation: fadeIn 0.8s ease-in-out; */
-    }
-    /* @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } */
   </style>
 </head>
 <body class="h-screen flex items-center justify-center">
 <div class="login-container bg-white rounded-lg shadow-xl overflow-hidden max-w-4xl w-full flex">
-  <!-- Left side image and logo/content centered -->
   <div class="hidden md:flex w-1/2 bg-gradient-to-r from-purple-500 to-indigo-600 p-12 text-white items-center justify-center">
     <div class="w-full text-center flex flex-col items-center justify-center">
       <h1 class="text-4xl font-bold mb-4">Bid Buy Save</h1>
@@ -26,14 +21,12 @@
     </div>
   </div>
 
-  <!-- Right side login form -->
   <div class="w-full md:w-1/2 p-8 md:p-12">
     <div class="text-center mb-8">
       <h2 class="text-3xl font-bold text-gray-800">Welcome Back</h2>
       <p class="text-gray-600 mt-2">Please sign in to your account</p>
     </div>
 
-    <!-- Error message if login fails -->
     <div th:if="${param.error}" class="mb-4 text-red-600 text-center">
       Invalid username or password.
     </div>

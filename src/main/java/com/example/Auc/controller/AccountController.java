@@ -64,6 +64,14 @@ public class AccountController {
             model.addAttribute("user", user);
             return "myaccount";
         }
+
+
+        if (newPassword.length() < 8) {
+            model.addAttribute("passwordError", "New password must be at least 8 characters long.");
+            model.addAttribute("user", user);
+            return "myaccount";
+        }
+//idhi change password same encoder Bcrypt
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
         model.addAttribute("passwordSuccess", "Password updated successfully.");

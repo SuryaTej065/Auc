@@ -15,7 +15,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -33,7 +32,6 @@ public class AuctionController {
     @Autowired
     private UserRepository userRepository;
 
-    // Helper to get current user by email (from Principal)
     private User getCurrentUser(Principal principal) {
         if (principal == null) return null;
         return userRepository.findByEmail(principal.getName());
@@ -55,7 +53,6 @@ public class AuctionController {
         AuctionItem item = auctionItemRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Auction item not found"));
         User currentUser = getCurrentUser(principal);
 
-        // Find the highest bid and winner
         List<Bid> bids = bidRepository.findAll().stream()
                 .filter(b -> b.getItemId().equals(id))
                 .collect(Collectors.toList());
@@ -100,7 +97,7 @@ public class AuctionController {
         if (images.length < 2 || images.length > 8) {
             return "redirect:/sell?error=ImageCount";
         }
-
+// from here it starts
         List<String> imageUrls = new ArrayList<>();
         for (MultipartFile image : images) {
             String url = uploadToImgBB(image);
@@ -125,6 +122,11 @@ public class AuctionController {
         auctionItemRepository.save(item);
         return "redirect:/auctions";
     }
+
+
+
+    //check this once, using image BB dont know if it'll work as intended tho,
+// youtube videos say it works for small projects, cloud is too much of a hassle to omplement
 
     private String uploadToImgBB(MultipartFile image) {
         try {
@@ -235,7 +237,6 @@ public class AuctionController {
             }
         }
 
-        // My Auctions: user's own active auctions (uploaded and not ended)
         List<AuctionItem> myActiveAuctions = auctionItemRepository.findAll().stream()
                 .filter(item -> item.getSeller() != null
                         && item.getSeller().getId().equals(user.getId()))

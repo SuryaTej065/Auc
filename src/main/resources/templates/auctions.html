@@ -10,22 +10,9 @@
         body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .auction-card {
-          /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
-        }
-        .auction-card:hover {
-          /* transform: translateY(-5px); */
-          /* box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
-        }
-        /* @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } */
-        .page-content {
-          /* animation: fadeIn 0.5s ease-out; */
-        }
     </style>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
-
-<!-- Navigation -->
 <nav class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
@@ -51,16 +38,11 @@
         </div>
     </div>
 </nav>
-
-<!-- Page Content -->
 <div class="page-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Page Header -->
     <div class="mb-8">
         <h1 class="text-3xl font-bold text-gray-900">Browse Auctions</h1>
         <p class="text-gray-600 mt-2">Find great deals from your fellow students</p>
     </div>
-
-    <!-- Auctions Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <th:block th:if="${auctionItems != null and !auctionItems.isEmpty()}">
             <th:block th:each="item : ${auctionItems}">
