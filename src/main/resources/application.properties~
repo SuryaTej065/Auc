@@ -28,4 +28,4 @@ spring.thymeleaf.suffix=.html
 aws.s3.bucket=imagebbs
 aws.region=ap-south-1
 aws.accessKey=AKIAX5JYMRPJKFSTY5XQ
-aws.secretKey=YOUR_SECRET_KEY
+aws.secretKey=+G1YIYxFQ05OqNjAR6MXn1MNgLvVbVuobVtF2qWo
