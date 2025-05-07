@@ -11,6 +11,7 @@
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .thumbnail {
+          /* transition: all 0.2s ease; */
           cursor: pointer;
         }
         .thumbnail:hover {
@@ -20,9 +21,20 @@
           border-color: #8B5CF6;
           border-width: 2px;
         }
+        /* @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } } */
+        .main-content {
+          /* animation: fadeIn 0.5s ease-out; */
+        }
+        .image-zoom {
+          /* transition: transform 0.3s ease; */
+        }
+        .image-zoom:hover {
+          /* transform: scale(1.05); */
+        }
     </style>
 </head>
 <body class="bg-gray-100">
+<!-- Navigation -->
 <nav class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
@@ -57,10 +69,13 @@
     </div>
 </nav>
 
+<!-- Main Content -->
 <div class="main-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column - Images and Description -->
         <div class="lg:col-span-2">
             <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                <!-- Image Section -->
                 <div th:if="${auctionItem.imageUrls != null && auctionItem.imageUrls.size() > 0}">
                     <div>
                         <img id="mainImage" th:src="${auctionItem.imageUrls[0]}" alt="Item Image" style="width:100%;max-width:400px;">
@@ -75,11 +90,13 @@
                 </div>
             </div>
 
+            <!-- Item Description -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">Item Description</h2>
                 <div class="prose max-w-none text-gray-700">
                     <p class="mb-4 whitespace-pre-line break-words" th:text="${auctionItem.description}"></p>
                 </div>
+                <!-- Seller Info -->
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <h3 class="text-lg font-bold text-gray-900 mb-4">About the Seller</h3>
                     <div class="flex items-center">
@@ -88,6 +105,7 @@
                                 th:text="${auctionItem.seller != null ? auctionItem.seller.firstName + ' ' + auctionItem.seller.lastName : 'Unknown Seller'}">Seller Name</h4>
                             <p class="text-sm text-gray-600 mt-1"
                                th:text="${auctionItem.seller != null ? auctionItem.seller.email : ''}">Seller Email</p>
+                            <!-- Show seller phone only to winner -->
                             <p class="text-sm text-gray-600 mt-1"
                                th:if="${isWinner}"
                                th:text="${auctionItem.phone}">Phone</p>
@@ -95,6 +113,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Buyer Info: Only show if auction ended and there is a winner -->
                 <div class="mt-8 pt-6 border-t border-gray-200"
                      th:if="${auctionEnded and winner != null}">
                     <h3 class="text-lg font-bold text-gray-900 mb-4">About the Buyer</h3>
@@ -112,16 +131,19 @@
             </div>
         </div>
 
+        <!-- Right Column - Auction Details -->
         <div>
             <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                 <h1 class="text-2xl font-bold text-gray-900 mb-2" th:text="${auctionItem.itemTitle}">Item Title</h1>
                 <div class="flex items-center mb-4">
                     <span class="ml-2 text-sm text-gray-600" th:text="'Item #' + ${auctionItem.id}"></span>
                 </div>
+                <!-- Current Bid -->
                 <div class="mb-4">
                     <span class="text-gray-600 text-sm">Current Bid:</span>
                     <p class="text-3xl font-bold text-green-600" th:text="'₹' + (${auctionItem.currentBid} != null ? ${auctionItem.currentBid} : ${auctionItem.startingPrice})"></p>
                 </div>
+                <!-- Place Bid Form: Only show if auction is not ended -->
                 <div th:if="${!auctionEnded}">
                     <form th:action="@{/bid}" method="post" class="mb-6">
                         <input type="hidden" name="itemId" th:value="${auctionItem.id}" />
@@ -153,9 +175,11 @@
                         </button>
                     </form>
                 </div>
+                <!-- Show message if auction ended -->
                 <div th:if="${auctionEnded}">
                     <p class="text-red-600 font-semibold mb-6">This auction has ended. No further bids are allowed.</p>
                 </div>
+                <!-- Shipping & Pickup -->
                 <div class="mt-6 pt-6 border-t border-gray-200">
                     <h3 class="font-medium text-gray-900 mb-3">Shipping & Pickup</h3>
                     <div class="flex items-center mb-3">
@@ -171,6 +195,7 @@
         </div>
     </div>
 </div>
+<!-- Image Switching Script -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const mainImage = document.getElementById('mainImage');

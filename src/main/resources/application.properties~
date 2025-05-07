@@ -4,7 +4,7 @@ spring.datasource.username=admin
 spring.datasource.password=Suryach_007
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 spring.jpa.show-sql=true
 
 spring.mail.host=smtp.gmail.com
@@ -15,7 +15,8 @@ spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.default-encoding=UTF-8
 
-server.port=8080
+server.address=0.0.0.0
+server.port=${PORT:8080}
 
 spring.mvc.view.prefix=/templates/
 spring.mvc.view.suffix=.html
@@ -23,3 +24,8 @@ spring.mvc.view.suffix=.html
 spring.thymeleaf.enabled=true
 spring.thymeleaf.prefix=classpath:/templates/
 spring.thymeleaf.suffix=.html
+
+aws.s3.bucket=imagebbs
+aws.region=ap-south-1
+aws.accessKey=AKIAX5JYMRPJKFSTY5XQ
+aws.secretKey=YOUR_SECRET_KEY
