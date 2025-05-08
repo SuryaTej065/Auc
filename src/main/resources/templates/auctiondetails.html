@@ -123,6 +123,9 @@
                     <p class="text-3xl font-bold text-green-600" th:text="'₹' + (${auctionItem.currentBid} != null ? ${auctionItem.currentBid} : ${auctionItem.startingPrice})"></p>
                 </div>
                 <div th:if="${!auctionEnded}">
+                    <div th:if="${param.bidError}" class="mb-4 p-2 bg-red-100 text-red-700 rounded">
+                        <span th:text="${param.bidError}"></span>
+                    </div>
                     <form th:action="@{/bid}" method="post" class="mb-6">
                         <input type="hidden" name="itemId" th:value="${auctionItem.id}" />
                         <h3 class="font-medium text-gray-900 mb-3">Place Your Bid</h3>
@@ -132,11 +135,15 @@
                                 <span class="inline-flex items-center px-3 bg-gray-100 text-gray-500 border border-r-0 border-gray-300 rounded-l-md">₹</span>
                                 <input type="number" id="bidAmount" name="bidAmount"
                                        th:min="${auctionItem.currentBid != null ? auctionItem.currentBid + 1 : auctionItem.startingPrice}"
+                                       th:max="${T(java.lang.Math).min((auctionItem.currentBid != null ? auctionItem.currentBid : auctionItem.startingPrice) + 5000, 999999)}"
                                        step="1"
                                        th:value="${auctionItem.currentBid != null ? auctionItem.currentBid + 1 : auctionItem.startingPrice}"
                                        class="flex-1 w-full rounded-r-md border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
                                        required>
                             </div>
+                            <p class="text-xs text-gray-500 mt-1">
+                                You can bid up to ₹5,000 more than the current bid, but not above ₹999,999.
+                            </p>
                         </div>
                         <div class="mb-6">
                             <div class="flex items-start">

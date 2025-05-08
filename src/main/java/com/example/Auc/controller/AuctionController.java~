@@ -101,6 +101,9 @@ public class AuctionController {
         if (images.length < 2 || images.length > 8) {
             return "redirect:/sell?error=ImageCount";
         }
+        if (startingPrice > 999999) {
+            return "redirect:/sell?error=PriceLimit";
+        }
 // from here it starts
         List<String> imageUrls = new ArrayList<>();
         for (MultipartFile image : images) {
@@ -138,7 +141,6 @@ public class AuctionController {
         auctionItemRepository.save(item);
         return "redirect:/auctions";
     }
-
 
 
     //check this once, using image BB dont know if it'll work as intended tho,
