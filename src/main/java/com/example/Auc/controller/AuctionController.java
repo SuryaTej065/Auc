@@ -54,7 +54,8 @@ public class AuctionController {
 
     @GetMapping("/auction/{id}")
     public String auctionDetails(@PathVariable Long id, Model model, Principal principal) {
-        AuctionItem item = auctionItemRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Auction item not found"));
+        AuctionItem item = auctionItemRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Auction item not found"));
         User currentUser = getCurrentUser(principal);
 
         List<Bid> bids = bidRepository.findAll().stream()
@@ -69,14 +70,20 @@ public class AuctionController {
         boolean auctionEnded = item.getEndTime() != null && item.getEndTime().isBefore(LocalDateTime.now());
         if (highestBid != null) {
             winner = userRepository.findByEmail(highestBid.getBidder());
-            isWinner = auctionEnded && currentUser != null && winner != null && currentUser.getEmail().equals(winner.getEmail());
+            isWinner = auctionEnded && currentUser != null && winner != null
+                    && currentUser.getEmail().equals(winner.getEmail());
         }
+
+        Double minBid = item.getCurrentBid() != null ? item.getCurrentBid() : item.getStartingPrice();
+        Double maxAllowedBid = Math.min(minBid + 5000, 999999.0);
 
         model.addAttribute("auctionItem", item);
         model.addAttribute("user", currentUser);
         model.addAttribute("winner", winner);
         model.addAttribute("isWinner", isWinner);
         model.addAttribute("auctionEnded", auctionEnded);
+        model.addAttribute("minBid", minBid);
+        model.addAttribute("maxAllowedBid", maxAllowedBid);
         return "auctiondetails";
     }
 

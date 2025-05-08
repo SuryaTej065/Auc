@@ -72,6 +72,9 @@ public class AuctionController {
             isWinner = auctionEnded && currentUser != null && winner != null && currentUser.getEmail().equals(winner.getEmail());
         }
 
+        Double minBid = item.getCurrentBid() != null ? item.getCurrentBid() : item.getStartingPrice();
+        Double maxAllowedBid = Math.min(minBid + 5000, 999999.0);
+
         model.addAttribute("auctionItem", item);
         model.addAttribute("user", currentUser);
         model.addAttribute("winner", winner);
@@ -174,14 +177,13 @@ public class AuctionController {
                            @RequestParam Double bidAmount,
                            Principal principal,
                            Model model) {
-        AuctionItem item = auctionItemRepository.findById(itemId).orElseThrow(() -> new NoSuchElementException("Auction item not found"));
+        AuctionItem item = auctionItemRepository.findById(itemId)
+                .orElseThrow(() -> new NoSuchElementException("Auction item not found"));
         User currentUser = getCurrentUser(principal);
 
         if (item.getSeller() != null && currentUser != null && item.getSeller().getId().equals(currentUser.getId())) {
-            model.addAttribute("bidError", "You cannot bid on your own auction.");
-            return "redirect:/auction/" + itemId;
+            return "redirect:/auction/" + itemId + "?bidError=You cannot bid on your own auction.";
         }
-
         Double minBid = item.getCurrentBid() != null ? item.getCurrentBid() : item.getStartingPrice();
         Double maxAllowedBid = Math.min(minBid + 5000, 999999.0);
 
@@ -196,7 +198,7 @@ public class AuctionController {
             item.setCurrentBid(bidAmount);
             auctionItemRepository.save(item);
         } else {
-            model.addAttribute("bidError", "Bid must be higher than current bid and not exceed ₹5000 increment or ₹999999 total.");
+            return "redirect:/auction/" + itemId + "?bidError=Bid must be higher than current bid and not exceed ₹5000 increment or ₹999999 total.";
         }
 
         return "redirect:/auction/" + itemId;
