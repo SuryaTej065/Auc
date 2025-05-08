@@ -135,7 +135,7 @@
                                 <span class="inline-flex items-center px-3 bg-gray-100 text-gray-500 border border-r-0 border-gray-300 rounded-l-md">₹</span>
                                 <input type="number" id="bidAmount" name="bidAmount"
                                        th:min="${auctionItem.currentBid != null ? auctionItem.currentBid + 1 : auctionItem.startingPrice}"
-                                       th:max="${T(java.lang.Math).min((auctionItem.currentBid != null ? auctionItem.currentBid : auctionItem.startingPrice) + 5000, 999999)}"
+                                       th:max="${T(java.lang.Math).min((auctionItem.currentBid != null ? auctionItem.currentBid + 5000 : auctionItem.startingPrice + 5000), 999999)}"
                                        step="1"
                                        th:value="${auctionItem.currentBid != null ? auctionItem.currentBid + 1 : auctionItem.startingPrice}"
                                        class="flex-1 w-full rounded-r-md border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
