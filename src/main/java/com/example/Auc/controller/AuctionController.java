@@ -6,7 +6,7 @@ import com.example.Auc.entity.User;
 import com.example.Auc.repository.AuctionItemRepository;
 import com.example.Auc.repository.BidRepository;
 import com.example.Auc.repository.UserRepository;
-import com.example.Auc.service.S3Service;
+//import com.example.Auc.service.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -33,8 +33,8 @@ public class AuctionController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private S3Service s3Service;
+//    @Autowired
+//    private S3Service s3Service;
 
     private User getCurrentUser(Principal principal) {
         if (principal == null) return null;
@@ -102,22 +102,22 @@ public class AuctionController {
             return "redirect:/sell?error=ImageCount";
         }
 // from here it starts
-//        List<String> imageUrls = new ArrayList<>();
-//        for (MultipartFile image : images) {
-//            String url = uploadToImgBB(image);
-//            if (url != null) imageUrls.add(url);
-//        }
+        List<String> imageUrls = new ArrayList<>();
+        for (MultipartFile image : images) {
+            String url = uploadToImgBB(image);
+            if (url != null) imageUrls.add(url);
+        }
 
 //uAWS S3 service
-        List<String> imageUrls = new ArrayList<>();
-        try {
-            for (MultipartFile image : images) {
-                String url = s3Service.uploadFile(image);
-                if (url != null) imageUrls.add(url);
-            }
-        } catch (Exception e) {
-            return "redirect:/sell?error=ImageUpload";
-        }
+//        List<String> imageUrls = new ArrayList<>();
+//        try {
+//            for (MultipartFile image : images) {
+//                String url = s3Service.uploadFile(image);
+//                if (url != null) imageUrls.add(url);
+//            }
+//        } catch (Exception e) {
+//            return "redirect:/sell?error=ImageUpload";
+//        }
 
 
         AuctionItem item = new AuctionItem();
@@ -144,28 +144,28 @@ public class AuctionController {
     //check this once, using image BB dont know if it'll work as intended tho,
 // youtube videos say it works for small projects, cloud is too much of a hassle to omplement
 
-//    private String uploadToImgBB(MultipartFile image) {
-//        try {
-//            String apiKey = "db6517868d1a2af5b75ec679814ba59b";
-//            String url = "https://api.imgbb.com/1/upload?key=" + apiKey;
-//
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-//
-//            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-//            body.add("image", Base64.getEncoder().encodeToString(image.getBytes()));
-//
-//            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-//            RestTemplate restTemplate = new RestTemplate();
-//
-//            ResponseEntity<Map> response = restTemplate.postForEntity(url, requestEntity, Map.class);
-//            Map data = (Map) response.getBody().get("data");
-//
-//            return (String) data.get("url");
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
+    private String uploadToImgBB(MultipartFile image) {
+        try {
+            String apiKey = "db6517868d1a2af5b75ec679814ba59b";
+            String url = "https://api.imgbb.com/1/upload?key=" + apiKey;
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+            body.add("image", Base64.getEncoder().encodeToString(image.getBytes()));
+
+            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+            RestTemplate restTemplate = new RestTemplate();
+
+            ResponseEntity<Map> response = restTemplate.postForEntity(url, requestEntity, Map.class);
+            Map data = (Map) response.getBody().get("data");
+
+            return (String) data.get("url");
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     @PostMapping("/bid")
     public String placeBid(@RequestParam Long itemId,
