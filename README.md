@@ -1,5 +1,7 @@
 Website link is: https://auc-sxdn.onrender.com
 
+This is an online Auction for students within the campus community to sell and buy items not in use or beneficial for others.
+
 Used: 
 HTML, Java, Spring Boot, MySQL
 
